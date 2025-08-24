@@ -1,0 +1,25 @@
+# ================================
+# STEP 1 : Install dependencies
+# ================================
+pip install huggingface_hub
+pip install psycopg2-binary sqlalchemy transformers torch accelerate fastapi uvicorn
+
+# ================================
+# STEP 2 : Log in to Hugging Face
+# ================================
+huggingface-cli login
+# (Paste access token - required for LLaMA)
+
+# ================================
+# STEP 3 : Download LLaMA model
+# ================================
+python download_llama.py
+# -> Model will be stored inside "models/llama"
+
+# ================================
+# STEP 4 : Run FastAPI app
+# ================================
+uvicorn main:app --reload
+
+# Then open in browser:
+# http://127.0.0.1:8000/recommend/123
